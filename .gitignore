@@ -1,0 +1,7 @@
+/XluaTest/XluaTest.sln
+/XluaTest/XluaTest.csproj
+/XluaTest/XluaTest.Editor.csproj
+/XluaTest/Temp/*
+/XluaTest/ProjectSettings/*
+/XluaTest/Library/*
+/XluaTest/.vs
