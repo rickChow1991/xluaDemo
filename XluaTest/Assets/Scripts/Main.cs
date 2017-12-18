@@ -9,21 +9,17 @@ public class Main : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-    // Use this for initialization
     void Start()
     {
         LuaManager.I.Start();
-        ///here start gamelogic, so need start at last
         GameManager.I.Start();
     }
-
 
     void Update() 
     {
         GameManager.I.Update();
         LuaManager.I.Update();
     }
-
 
     void OnDestroy()
     {

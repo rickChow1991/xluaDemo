@@ -11,41 +11,46 @@ using XLua;
 public class LuaManager : Singleton<LuaManager>
 {
     public LuaEnv luaenv;
-    
-    public void Start() 
+
+    public void Start()
     {
         luaenv = new LuaEnv();
-        luaenv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
-        luaenv.AddBuildin("lpeg", XLua.LuaDLL.Lua.LoadLpeg);
-        luaenv.AddBuildin("protobuf.c", XLua.LuaDLL.Lua.LoadProtobufC);
+        AddBuildin();
         InitLuaPath();
         AddLuaLoader();
     }
 
-
-    public void Release() 
+    public void Release()
     {
         luaenv.Dispose();
     }
 
     #region Init
+    void AddBuildin()
+    {
+        luaenv.AddBuildin("rapidjson", XLua.LuaDLL.Lua.LoadRapidJson);
+        luaenv.AddBuildin("lpeg", XLua.LuaDLL.Lua.LoadLpeg);
+        luaenv.AddBuildin("protobuf.c", XLua.LuaDLL.Lua.LoadProtobufC);
+    }
+
     void AddLuaLoader()
     {
         luaenv.AddLoader(LuaFileUtils.I.ReadFile);
     }
-     void InitLuaPath()
-     {
-         if (AppConst.DebugMode)
-         {
-             //string rootPath = AppConst.FrameworkRoot;
-             AddSearchPath(AppConst.luaDir);
-         }
-         //else
-         //{
-         //    AddSearchPath(Util.DataPath + "lua");
-         //}
-     }
-	#endregion
+
+    void InitLuaPath()
+    {
+        if (AppConst.DebugMode)
+        {
+            //string rootPath = AppConst.FrameworkRoot;
+            AddSearchPath(AppConst.luaDir);
+        }
+        //else
+        //{
+        //    AddSearchPath(Util.DataPath + "lua");
+        //}
+    }
+    #endregion
 
     public void Update() { }
 
@@ -78,7 +83,5 @@ public class LuaManager : Singleton<LuaManager>
         //return StringBuilderCache.GetStringAndRelease(sb);
         return sb.ToString();
     }
-
-
 }
 
