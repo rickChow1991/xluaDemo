@@ -3,7 +3,6 @@ using System;
 
 public class GameManager : Singleton<GameManager>
 {
-    //public delegate Action MainAction();
     public void Start()
     {
         StartLuaLogic();
