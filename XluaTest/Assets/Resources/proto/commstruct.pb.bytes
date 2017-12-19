@@ -1,0 +1,33 @@
+
+Ì
+commstruct.prototcpproto"µ
+	TableInfo
+tbId (RtbId
+gameId (RgameId
+num (Rnum
+betMin (RbetMin
+betMax (RbetMax
+	playerMin (R	playerMin
+	playerMax (R	playerMax"Ó
+RoomInfo
+tbId (RtbId 
+serviceType (RserviceType
+name (	Rname
+playType (RplayType
+roomType (RroomType
+gameCut (RgameCut+
+tables (2.tcpproto.TableInfoRtables"Ø
+
+PlayerData
+userId (RuserId
+idseq (Ridseq
+nickname (	Rnickname
+avatar (	Ravatar
+sex (Rsex
+gold (Rgold
+gem (Rgem
+score (Rscore
+roomcard	 (Rroomcard"E
+TableCreatePara
+para_id (RparaId
+sel_para (RselPara

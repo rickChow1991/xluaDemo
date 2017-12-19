@@ -1,0 +1,20 @@
+
+ê
+lobby.prototcpprotocommstruct.proto"T
+
+SCRoomInfo
+roomId (RroomId.
+roomInfo (2.tcpproto.RoomInfoRroomInfo"0
+C2SLobbyTokenEnter
+tcpToken (	RtcpToken"B
+S2CLobbyTokenEnter
+retCode (RretCode
+guid (Rguid".
+C2SLobbyReqEnterRoom
+roomId (RroomId"…
+C2SLobbyReqCreateTable
+roomId (RroomId
+gameId (RgameId;
+createParas (2.tcpproto.TableCreateParaRcreateParas";
+C2SLobbyReqJoinCreatedTable
+	tableCode (R	tableCode

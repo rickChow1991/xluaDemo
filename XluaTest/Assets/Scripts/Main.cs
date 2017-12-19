@@ -3,19 +3,20 @@ using System;
 using System.Collections;
 using XLua;
 
-public class Main : MonoBehaviour {
+public class Main : MonoBehaviour
+{
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
     }
-
+    
     void Start()
     {
         LuaManager.I.Start();
         GameManager.I.Start();
     }
 
-    void Update() 
+    void Update()
     {
         GameManager.I.Update();
         LuaManager.I.Update();
