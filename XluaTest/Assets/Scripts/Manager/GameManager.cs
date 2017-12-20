@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 public class GameManager : Singleton<GameManager>
 {
     //玩家数据
-    struct PlayerData
+    public struct PlayerData
     {
         public int userId;     //玩家ID--系统内唯一角色ID
         public int idseq;      //玩家展示ID
@@ -19,7 +19,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     //玩家请求加入创建的房间
-    struct L2GSReqPlayerJoinCreatedTable
+    public struct L2GSReqPlayerJoinCreatedTable
     {
         //玩家ID
         public int userId;
@@ -57,7 +57,6 @@ public class GameManager : Singleton<GameManager>
         user.roomId = 101;
         user.tableId = 1;
         user.player = userInfo;
-
         Action<byte[]> testProtobuf = LuaManager.I.luaenv.Global.Get<Action<byte[]>>("TestProtobuf");
         testProtobuf(StrutsToBytesArray(user));
     }

@@ -57,6 +57,7 @@ namespace XLuaExtension
                 typeof(Action<string>),
                 typeof(Action<double>),
                 typeof(Action<byte[]>),
+                typeof(Action<GameManager.L2GSReqPlayerJoinCreatedTable>),
                 typeof(UnityEngine.Events.UnityAction),
                 typeof(System.Collections.IEnumerator),
                 typeof(ScrollContent.GetScrollCellSize),

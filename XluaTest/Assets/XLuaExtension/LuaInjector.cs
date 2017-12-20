@@ -29,12 +29,10 @@ namespace XLuaExtension
                 }
                 else if (c.name.StartsWith("sr_"))
                 {
-                    Debug.LogError(c.name);
                     self.Set(c.name, c.GetComponent<ScrollRect>());
                 }
                 else if(c.name.StartsWith("sc_"))
                 {
-                    Debug.LogError(c.name);
                     self.Set(c.name, c.GetComponent<ScrollContent>());
                 }
             }
