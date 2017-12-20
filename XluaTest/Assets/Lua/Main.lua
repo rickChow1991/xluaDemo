@@ -1,8 +1,13 @@
-require "events"
-
+require("PbManager")
+local M = {}
+M._moduleName = ...
+M.__index = M
+----- begin module -----
+local myApp = require("MyApp")
 --主入口函数。从这里开始lua逻辑
-function Main() 
-  local myApp = require("MyApp").new():run()
+function Main()
+  RegisterPbs()
+  myApp:run()
 end
 
 --场景切换通知
@@ -12,12 +17,6 @@ end
 
 function TestProtobuf(msg)
   print("len:"..string.len(msg))
-
-  local protobuf = require 'protobuf'
-  protobuf.register(CS.UnityEngine.Resources.Load('proto/commstruct.pb').bytes)
-  protobuf.register(CS.UnityEngine.Resources.Load('proto/lobby.pb').bytes)
-  protobuf.register(CS.UnityEngine.Resources.Load('proto/srviner.pb').bytes)
-  
   local playerData = { }
   playerData.userId = 138
   playerData.idseq = 1001
@@ -35,11 +34,8 @@ function TestProtobuf(msg)
   tableInfo.tableId = 2
   tableInfo.player = playerData
 
-  --序列化
-  local encode = protobuf.encode('tcpproto.L2GSReqPlayerJoinCreatedTable', tableInfo)
-  -- 反序列化
-  local user_decode = protobuf.decode('tcpproto.L2GSReqPlayerJoinCreatedTable', encode)
-
-  assert(playerData.userId == user_decode.userId)
+  local user_decode = EncodeBuffer('tcpproto.L2GSReqPlayerJoinCreatedTable',tableInfo)
   print('hello', user_decode.player.nickname)
 end
+----- end -----
+return M

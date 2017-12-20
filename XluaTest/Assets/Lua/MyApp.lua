@@ -1,13 +1,8 @@
-require "Common/define"
-require "Common/functions"
-require "framework/init"
-class("MyApp")
---- @class MyApp
-function MyApp:ctor()
-  self.curScene = nil;
-end
-
-function MyApp:run()
+local M = {}
+M._moduleName = ...
+M.__index = M
+----- begin module -----
+function M:run()
   --[[
   local rapidjson = require 'rapidjson' 
   local t = rapidjson.decode('{"a":123}')
@@ -24,7 +19,7 @@ function MyApp:run()
   self:OpenUI("UIFrame") 
 end
 
-function MyApp:OpenUI(SceneName)
+function M:OpenUI(SceneName)
   print("ui name:"..SceneName)
   local uiPath = "UI/"..SceneName
   local uiPrefab = CS.UnityEngine.Resources.Load(uiPath);
@@ -47,4 +42,5 @@ function MyApp:OpenUI(SceneName)
   self.sc_Content:Show()
 end
 
-return MyApp
+----- end -----
+return M
