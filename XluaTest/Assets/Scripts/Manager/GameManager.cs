@@ -41,24 +41,10 @@ public class GameManager : Singleton<GameManager>
         Action main = LuaManager.I.luaenv.Global.Get<Action>("Main");
         main();
 
-        var userInfo = new PlayerData();
-        userInfo.userId = 1001;
-        userInfo.idseq = 100001;
-        userInfo.nickname = "Flowery_from_c#";
-        userInfo.avatar = "avatar_001";
-        userInfo.sex = 0;
-        userInfo.gold = 998;
-        userInfo.gem = 100;
-        userInfo.score = 99;
-        userInfo.roomcard = 100;
-
-        var user = new L2GSReqPlayerJoinCreatedTable();
-        user.userId = 1001;
-        user.roomId = 101;
-        user.tableId = 1;
-        user.player = userInfo;
-        Action<byte[]> testProtobuf = LuaManager.I.luaenv.Global.Get<Action<byte[]>>("TestProtobuf");
-        testProtobuf(StrutsToBytesArray(user));
+        var protoPath = Resources.Load<TextAsset>("protoPath");
+        var arr = protoPath.text.Split(';');
+        Action<string[]> testProtobuf = LuaManager.I.luaenv.Global.Get<Action<string[]>>("TestProtobuf");
+        testProtobuf(arr);
     }
 
     public static byte[] StrutsToBytesArray(object structObj)

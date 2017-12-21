@@ -1,8 +1,14 @@
 protobuf = require 'protobuf'
-function RegisterPbs()
-    protobuf.register(CS.UnityEngine.Resources.Load('proto/commstruct.pb').bytes)
-    protobuf.register(CS.UnityEngine.Resources.Load('proto/lobby.pb').bytes)
-    protobuf.register(CS.UnityEngine.Resources.Load('proto/srviner.pb').bytes)
+function RegisterPbs(pbPaths)
+    for i = 0, pbPaths.Length - 1 do
+        local p = pbPaths[i]
+        if string.len(p) > 0 then
+            protobuf.register(CS.UnityEngine.Resources.Load(p).bytes)
+        end
+    end
+    --protobuf.register(CS.UnityEngine.Resources.Load('proto/tcpproto/commstruct.pb').bytes)
+    --protobuf.register(CS.UnityEngine.Resources.Load('proto/tcpproto/lobby.pb').bytes)
+    --protobuf.register(CS.UnityEngine.Resources.Load('proto/tcpproto/srviner.pb').bytes)
 end
 
 function EncodeBuffer(type,data)

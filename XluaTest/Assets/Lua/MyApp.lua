@@ -20,7 +20,6 @@ function M:run()
 end
 
 function M:OpenUI(SceneName)
-  print("ui name:"..SceneName)
   local uiPath = "UI/"..SceneName
   local uiPrefab = CS.UnityEngine.Resources.Load(uiPath);
   local position = CS.UnityEngine.Vector3.zero
@@ -35,10 +34,8 @@ function M:OpenUI(SceneName)
   end
   self.sc_Content.onUpdateScrollView = 
   function(idx,tran)
-    print("idx:"..idx)
-    print("tranname:"..tran.name)
+    print(idx..":"..tran.name)
   end
-  print("count:"..self.sc_Content.onGetElementCount())
   self.sc_Content:Show()
 end
 

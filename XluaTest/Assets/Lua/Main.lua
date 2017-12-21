@@ -6,7 +6,6 @@ M.__index = M
 local myApp = require("MyApp")
 --主入口函数。从这里开始lua逻辑
 function Main()
-  RegisterPbs()
   myApp:run()
 end
 
@@ -16,7 +15,9 @@ function OnLevelWasLoaded(level)
 end
 
 function TestProtobuf(msg)
-  print("len:"..string.len(msg))
+  --local result = msg:split(";")  --分隔字符串
+  RegisterPbs(msg)
+
   local playerData = { }
   playerData.userId = 138
   playerData.idseq = 1001
@@ -37,5 +38,14 @@ function TestProtobuf(msg)
   local user_decode = EncodeBuffer('tcpproto.L2GSReqPlayerJoinCreatedTable',tableInfo)
   print('hello', user_decode.player.nickname)
 end
+--------------------------- Lua字符串分隔方法 -----------------------------------------  
+--字符串分隔方法  
+function string:split(sep)  
+  local sep, fields = sep or ":", {}  
+  local pattern = string.format("([^%s]+)", sep)  
+  self:gsub(pattern, function (c) fields[#fields + 1] = c end)  
+  return fields  
+end  
+
 ----- end -----
 return M
